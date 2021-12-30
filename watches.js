@@ -24,7 +24,7 @@ setInterval(update_clock, 1000)
 function update_clock() {
     let current_time = new Date()
     // get all time
-    let seconds = current_time.getSeconds() * 9
+    let seconds = current_time.getSeconds() * 6
     let minutes = current_time.getMinutes() * deg
     let hours = current_time.getHours() * deg
 
