@@ -3,7 +3,7 @@ const button = document.getElementById ('button')
 const sec = document.querySelector('#sec')
 const minute = document.querySelector('#min')
 const hour = document.querySelector('#hour')
-
+const deg = 6
 let toggle_value = 0
 
 button.addEventListener('click', () => {
@@ -24,21 +24,16 @@ setInterval(update_clock, 1000)
 function update_clock() {
     let current_time = new Date()
     // get all time
-    let seconds = current_time.getSeconds()
-    let minutes = current_time.getMinutes()
-    let hours = current_time.getHours()
+    let seconds = current_time.getSeconds() * 9
+    let minutes = current_time.getMinutes() * deg
+    let hours = current_time.getHours() * deg
 
-    // rotation degree
 
-    let sec_degree = -90 + (seconds*6)
-    let min_degree = -90 + (minutes * (360 / 60))
-    let hour_degree = -90 + (hours * (360 / 12))
-    hour_degree = hour_degree + (0.5 * minutes)
-
+   
     // rotation 
-    sec.style.transform = `rotate(`+sec_degree+`deg)`
-    minute.style.transform = `rotate(`+min_degree+`deg)`
-    hours.style.transform = `rotate(`+hour_degree+`deg)`
+    hour.style.transform = `rotateZ(${(hours) + (minutes / 12)} deg)`
+    minute.style.transform = `rotateZ(${(minutes)}deg)`
+    sec.style.transform = `rotateZ(${(seconds)}deg)`
 }
 
 update_clock()
